@@ -14,7 +14,7 @@ else if (License === 'Apache-2.0') {
 }
 
 function renderLicenseLink(License) {
-  if (License === 'Mit') {
+  if (License === 'MIT') {
     return '[Link](https://opensource.org/licenses/MIT)';
   } else if (License === 'GPL v2') {
     return '[Link](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)';
@@ -26,7 +26,7 @@ function renderLicenseLink(License) {
 }
 
 function renderLicenseSection(License) {
-  if (License === 'Mit') {
+  if (License === 'MIT') {
     return `## License
     This project is covered under the MIT license.`;
   } else if (License === 'GPL v2') {
@@ -80,7 +80,7 @@ ${data.Usage}
 ## Credits
 
 ${renderLicenseSection(data.License)}
-License ${renderLicenseLink(data.License)}
+${renderLicenseLink(data.License)}
 
 ## Contribute
 
