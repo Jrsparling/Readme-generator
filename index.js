@@ -3,76 +3,73 @@
         const fs = require('fs');
 
 const questions = [
-    'What is your project title?',
-    'Describe your project.',
-    'Check what table of contents sections apply.',
-    'Type in the steps to install your project.',
-    'Type how you use your project.',
-    'Select a license.',
-    'Enter contribution guidelines.',
-    'Type in testing parameters.',
-    'Type in your GitHub username.',
-    'Type in your email.'
+    {
+        type: 'input',
+        message: 'What is your project title?',
+        name: 'Title', },
+            {
+        type: 'input',
+        message: 'Describe your project.',
+        name: 'Description', },
+            {
+        type: 'checkbox',
+        message: 'Check what table of contents sections apply.',
+        name: 'TableOfContents',
+        choices: [
+            "Description", 
+            "Installation",
+            "Usage", 
+            "License",
+            "Credits", 
+            "Contributing", 
+            "Tests", 
+            "Questions",
+        ] },
+            {
+        type: 'input',
+        message:     'Type in the steps to install your project.',
+        name: 'Installation', },   
+            {
+        type: 'input',
+        message: 'Type how you use your project.',
+        name: 'Usage', },   
+            {
+        type: 'list',
+        message: 'Select a license.',
+        name: 'License',
+        choices: [
+            "MIT",
+            "GPL v2",
+            "GPL v3",
+            "Apache-2.0",
+        ] },   
+            {
+        type: 'input',
+        message: 'Enter contribution guidelines.',
+        name: 'Contributing', },   
+            {
+        type: 'input',
+        message: 'Type in testing parameters.',
+        name: 'Tests', },
+            {
+        type: 'input',
+        message: 'Type in your GitHub username.',
+        name: 'GitHub' },
+        {
+        type: 'input',
+        message: 'Type in your email.',
+        name: 'Email',
+        },
 ];
 
-function init() { inquirer.prompt([
-                {
-            type: 'input',
-            message: questions[0],
-            name: 'Title', },
-                {
-            type: 'input',
-            message: questions[1],
-            name: 'Description', },
-                {
-            type: 'checkbox',
-            message: questions[2],
-            name: 'TableOfContents',
-            choices: [
-                "Description", 
-                "Installation",
-                "Usage", 
-                "License",
-                "Credits", 
-                "Contributing", 
-                "Tests", 
-                "Questions",
-            ] },
-                {
-            type: 'input',
-            message: questions[3],
-            name: 'Installation', },   
-                {
-            type: 'input',
-            message: questions[4],
-            name: 'Usage', },   
-                {
-            type: 'list',
-            message: questions[5],
-            name: 'License', },   
-                {
-            type: 'input',
-            message: questions[6],
-            name: 'Contributing', },   
-                {
-            type: 'input',
-            message: questions[7],
-            name: 'Tests', },
-                {
-            type: 'input',
-            message: questions[8],
-            name: 'GitHub' },
-            {
-            type: 'input',
-            message: questions[9],
-            name: 'Email',
-            },
-        ]) 
+function init() { 
+    inquirer.prompt(questions)
         .then((data) => {
-            const README = generateMarkdown.generateMarkdownFn(data);
-            const fileName = `${data.title.toLowerCase().split(' ').join('_')}.md`;
+            const README = generateMarkdown(data);
+            const fileName = `${data.Title.toLowerCase().split(' ').join('_')}.md`;
+            fs.writeFile(fileName, README, (err) => err ? console.log(err) : console.log("success! README has been created as", fileName));
     });
-         fs.writeFile("filename", README, (err) => err ? console.log(err) : console.log("success! README has been created as", filename));
-    }
+        
+    };
 // Function call to initialize app
 init();

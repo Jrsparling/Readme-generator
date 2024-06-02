@@ -5,12 +5,12 @@ function renderLicenseBadge(License) {
   else if (License === 'GPL v2') {
     return '[![License: GNUv2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)'
 }
-else if (License === 'GPL v3')
+else if (License === 'GPL v3') {
   return '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
-
-else if (License === 'Apache-2.0')
-  return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
-else ('');
+}
+else if (License === 'Apache-2.0') {
+  return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'}
+  else {return''}
 }
 
 function renderLicenseLink(License) {
@@ -20,53 +20,53 @@ function renderLicenseLink(License) {
     return '[Link](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)';
   } else if (License === 'GPL v3') {
     return '[Link](https://www.gnu.org/licenses/gpl-3.0)';
-  } else if (License === 'Apache-2.0')
-    return '[Link](https://opensource.org/licenses/Apache-2.0)';
-    else ('')
+  } else if (License === 'Apache-2.0') {
+    return '[Link](https://opensource.org/licenses/Apache-2.0)';}
+  else {return''}
 }
 
 function renderLicenseSection(License) {
   if (License === 'Mit') {
-    return `##License
+    return `## License
     This project is covered under the MIT license.`;
   } else if (License === 'GPL v2') {
-    return `##License
+    return `## License
     This project is covered under the GNU General Public License v2.0.`;
 }  else if (License === 'GPL v3') {
-  return `##License
+  return `## License
   This project is covered under the GNU General Public License v3.0.`;
 } else if (License === 'Apache-2.0') {
-  return `##License
+  return `## License
   This project is covered under the Apache License 2.0.`;
-} else ('')
+} else {return''}
 }
 
 function generateMarkdown(data){
   
   return `
-# ${data.title}
+# ${data.Title}
 
 ## Description
 
 ${data.Description}
 
-${renderLicenseBadge(data.license)}
+${renderLicenseBadge(data.License)}
 
 ## Table of Contents
 
-[Installation](#Installation)
+[Installation](#installation)
 <br/>
-[Usage](#Usage
+[Usage](#usage)
 <br/>
-[Credits](#Credits)
+[Credits](#credits)
 <br/>
-[License](#License)
+[License](#license)
 <br/>
-[How to Contribute](#Contributing)
+[Contribute](#contribute)
 <br/>
-[Test](#Tests)
+[Test](#tests)
 <br/>
-[Questions](#Questions)
+[Questions](#questions)
 <br/>
 
 ## Installation
@@ -82,7 +82,7 @@ ${data.Usage}
 ${renderLicenseSection(data.License)}
 License ${renderLicenseLink(data.License)}
 
-## How to Contribute
+## Contribute
 
 ${data.Contributing}
 
@@ -93,6 +93,6 @@ ${data.Tests}
 ## Questions
 My [GitHub](https://github.com/${data.GitHub}) profile
 
-Got questions? Reach out to me via email: [${data.email}](mailto:${data.email})}`;
+Got questions? Reach out to me via email: [${data.Email}](mailto:${data.Email})}`;
 }
 module.exports = generateMarkdown;
