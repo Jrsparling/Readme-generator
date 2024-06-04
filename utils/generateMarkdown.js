@@ -93,6 +93,6 @@ ${data.Tests}
 ## Questions
 My [GitHub](https://github.com/${data.GitHub}) profile
 
-Got questions? Reach out to me via email: [${data.Email}](mailto:${data.Email})}`;
+Got questions? Reach out to me via email: [${data.Email}](mailto:${data.Email})`;
 }
 module.exports = generateMarkdown;
